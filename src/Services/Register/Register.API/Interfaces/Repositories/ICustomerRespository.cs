@@ -1,8 +1,9 @@
 ﻿using Processor.API.Entities;
+using Register.API.DTOs;
 
 namespace Register.API.Interfaces.Repositories;
 public interface ICustomerRespository
 {
-    Task<Customer> SaveCustomer(Customer customer);
+    Task<CustomerResponseDTO> SaveCustomer(Customer customer);
 }
 

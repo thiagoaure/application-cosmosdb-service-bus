@@ -1,28 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Processor.API.Entities;
-using Register.API.Interfaces.Repositories;
+using Register.API.DTOs;
+using Register.API.Interfaces.Services;
 
 namespace Processor.API.Controllers;
 [Route("api/customer")]
 [ApiController]
 public class CustomerController
 {
-    private readonly ICustomerRespository _customerRepository;
+    private readonly ICustomerService _customerService;
 
-    public CustomerController(ICustomerRespository customerRepository)
+    public CustomerController(ICustomerService customerService)
     {
-        _customerRepository = customerRepository;
+        _customerService = customerService;
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateCustomerAsync(
-        [FromBody] Customer customer
+        [FromBody] CustomerRequestDTO request
     )
     {
         try
         {
-            var response = await _customerRepository.SaveCustomer( customer );
+            var response = await _customerService.SaveCustomer( request );
             return new OkObjectResult(response);
         }
         catch (Exception ex)
