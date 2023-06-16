@@ -1,4 +1,4 @@
-namespace Register.API;
+namespace Processor.API;
 
 public class WeatherForecast
 {
