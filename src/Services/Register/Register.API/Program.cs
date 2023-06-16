@@ -1,6 +1,7 @@
 using Microsoft.Azure.Cosmos;
 using Processor.API.DataContext;
 using Processor.API.Repositories;
+using Register.API.Interfaces.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
