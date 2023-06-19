@@ -17,11 +17,16 @@ public class CustomerRepository : ICustomerRespository
         DbSet = dbSet;
         _mapper = mapper;
     }
-    public async Task<CustomerResponseDTO> SaveCustomer(Customer customer)
+
+    public async Task<IEnumerable<Customer?>> GetAll()
+    {
+        return await DbSet.Customer.ToListAsync();
+    }
+
+    public async Task<Customer> SaveCustomer(Customer customer)
     {
         DbSet.Customer.Add(customer);
         await DbSet.SaveChangesAsync();
-        var response = _mapper.Map<CustomerResponseDTO>(customer);
-        return response;
+        return customer;
     }
 }

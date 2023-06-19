@@ -4,6 +4,8 @@ using Register.API.DTOs;
 namespace Register.API.Interfaces.Repositories;
 public interface ICustomerRespository
 {
-    Task<CustomerResponseDTO> SaveCustomer(Customer customer);
+    Task<Customer> SaveCustomer(Customer customer);
+    Task<IEnumerable<Customer?>> GetAll();
+
 }
 

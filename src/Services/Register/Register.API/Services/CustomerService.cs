@@ -1,6 +1,7 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Register.API.Entities;
 using Register.API.DTOs;
+using Register.API.Entities;
 using Register.API.Interfaces.Repositories;
 using Register.API.Interfaces.Services;
 
@@ -17,9 +18,16 @@ public class CustomerService : ICustomerService
         _mapper = mapper;
     }
 
+    public async Task<IEnumerable<CustomerResponseDTO?>> GetAll()
+    {
+        var customers = await _customerRespository.GetAll();
+        return _mapper.Map<IEnumerable<CustomerResponseDTO>>(customers);
+    }
+
     public async Task<CustomerResponseDTO> SaveCustomer(CustomerRequestDTO request)
     {
         Customer customer = _mapper.Map<Customer>(request);
-        return await _customerRespository.SaveCustomer(customer);
+        var response = await _customerRespository.SaveCustomer(customer);
+        return _mapper.Map<CustomerResponseDTO>(response);
     }
 }
