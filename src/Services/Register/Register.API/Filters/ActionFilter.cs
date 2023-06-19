@@ -22,6 +22,6 @@ public class ActionFilter : IAsyncActionFilter
 
         _stopwatch.Stop();
 
-        _logger.LogInformation($"Ação executada em {_stopwatch.ElapsedMilliseconds} ms.");
+        _logger.LogInformation($"Acao executada em {_stopwatch.ElapsedMilliseconds} ms.");
     }
 }
