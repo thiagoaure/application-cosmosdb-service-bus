@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Processor.API.Entities;
+using Register.API.Entities;
 using Register.API.DTOs;
 
 namespace Register.API.Helpers;

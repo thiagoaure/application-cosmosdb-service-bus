@@ -1,9 +1,9 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using Processor.API.Entities;
+using Register.API.Entities;
 using Register.API.Helpers;
 
-namespace Processor.API.DataContext;
+namespace Register.API.DataContext;
 public class AppDbContext : DbContext
 {
     public DbSet<Customer> Customer { get; set; }

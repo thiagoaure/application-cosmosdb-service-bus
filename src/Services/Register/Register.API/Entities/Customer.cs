@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Processor.API.Entities;
+namespace Register.API.Entities;
 public class Customer
 {
     [Key]

@@ -1,18 +1,10 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.ServiceBus;
-using Microsoft.Azure.ServiceBus.Management;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Register.API.DTOs;
 using Register.API.Filters;
-using Register.API.Helpers;
 using Register.API.Interfaces.Services;
-using System.Configuration;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
 
-namespace Processor.API.Controllers;
+namespace Register.API.Controllers;
 [Route("api/customer")]
 [ApiController]
 public class CustomerController
@@ -38,6 +30,22 @@ public class CustomerController
         {
             var response = await _customerService.SaveCustomer(request);
             await _serviceBus.SendMessageToQueue(request);
+
+            return new OkObjectResult(response);
+        }
+        catch (Exception ex)
+        {
+            var json = JsonConvert.SerializeObject(ex)!;
+            return new BadRequestObjectResult(json);
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllCustomersAsync()
+    {
+        try
+        {
+            var response = await _customerService.GetAll();
 
             return new OkObjectResult(response);
         }
