@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+using AutoMapper;
+using Register.API.Entities;
 using Register.API.DTOs;
 using Register.API.Entities;
 using Register.API.Interfaces.Repositories;
