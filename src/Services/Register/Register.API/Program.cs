@@ -1,5 +1,5 @@
 using AutoMapper;
-using Processor.API.DataContext;
+using Register.API.DataContext;
 using Register.API.Extensions;
 using Register.API.Filters;
 using Register.API.Helpers;

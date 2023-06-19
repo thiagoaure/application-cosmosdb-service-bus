@@ -1,4 +1,4 @@
-﻿using Processor.API.Entities;
+﻿using Register.API.Entities;
 
 namespace Register.API.DTOs;
 public class CustomerRequestDTO

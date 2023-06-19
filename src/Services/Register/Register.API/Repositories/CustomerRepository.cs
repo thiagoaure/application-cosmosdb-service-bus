@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Processor.API.DataContext;
-using Processor.API.Entities;
+using Register.API.DataContext;
+using Register.API.Entities;
 using Register.API.DTOs;
 using Register.API.Interfaces.Repositories;
 
-namespace Processor.API.Repositories;
+namespace Register.API.Repositories;
 
 public class CustomerRepository : ICustomerRespository
 {
