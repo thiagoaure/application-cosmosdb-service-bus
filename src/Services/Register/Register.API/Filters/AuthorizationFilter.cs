@@ -7,7 +7,7 @@ namespace Register.API.Filters;
 
 public class AuthorizationFilter : IAuthorizationFilter
 {
-    private readonly string key = ConfigurationConnectionStrings.ConfigConncetion().
+    private readonly string key = ConfigurationConnectionStrings.ConfigConnection().
             GetValue<string>("AccountKey");
     public void OnAuthorization(AuthorizationFilterContext context)
     {

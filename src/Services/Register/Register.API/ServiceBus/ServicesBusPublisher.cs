@@ -9,7 +9,7 @@ namespace Register.API.ServiceBus;
 
 public class ServiceBusPublisher : IServiceBus
 {
-    private string _serviceBusConnectionString = ConfigurationConnectionStrings.ConfigConncetion()
+    private readonly string _serviceBusConnectionString = ConfigurationConnectionStrings.ConfigConnection()
             .GetValue<string>("BusConnectionString")!;
     public async Task SendMessageToQueue(CustomerRequestDTO customer){
         var queueName = "customer";
