@@ -4,7 +4,7 @@ using Register.API.DTOs;
 using Register.API.Filters;
 using Register.API.Interfaces.Services;
 
-namespace Processor.API.Controllers;
+namespace Register.API.Controllers;
 [Route("api/customer")]
 [ApiController]
 public class CustomerController
@@ -30,6 +30,22 @@ public class CustomerController
         {
             var response = await _customerService.SaveCustomer(request);
             await _serviceBus.SendMessageToQueue(request);
+
+            return new OkObjectResult(response);
+        }
+        catch (Exception ex)
+        {
+            var json = JsonConvert.SerializeObject(ex)!;
+            return new BadRequestObjectResult(json);
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllCustomersAsync()
+    {
+        try
+        {
+            var response = await _customerService.GetAll();
 
             return new OkObjectResult(response);
         }

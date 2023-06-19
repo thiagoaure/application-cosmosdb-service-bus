@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Processor.API.Entities;
+namespace Register.API.Entities;
 
 [ComplexType]
 public class Address

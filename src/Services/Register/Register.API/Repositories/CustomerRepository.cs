@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Processor.API.DataContext;
-using Processor.API.Entities;
+using Register.API.DataContext;
+using Register.API.Entities;
 using Register.API.DTOs;
 using Register.API.Interfaces.Repositories;
 
-namespace Processor.API.Repositories;
+namespace Register.API.Repositories;
 
 public class CustomerRepository : ICustomerRespository
 {
@@ -17,11 +17,16 @@ public class CustomerRepository : ICustomerRespository
         DbSet = dbSet;
         _mapper = mapper;
     }
-    public async Task<CustomerResponseDTO> SaveCustomer(Customer customer)
+
+    public async Task<IEnumerable<Customer?>> GetAll()
+    {
+        return await DbSet.Customer.ToListAsync();
+    }
+
+    public async Task<Customer> SaveCustomer(Customer customer)
     {
         DbSet.Customer.Add(customer);
         await DbSet.SaveChangesAsync();
-        var response = _mapper.Map<CustomerResponseDTO>(customer);
-        return response;
+        return customer;
     }
 }
