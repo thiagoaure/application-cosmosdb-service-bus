@@ -3,7 +3,7 @@
 public class ConfigurationConnectionStrings
 {
 
-    public static IConfiguration ConfigConncetion()
+    public static IConfiguration ConfigConnection()
     {
         var configuration = new ConfigurationBuilder()
         .AddJsonFile("appsettings.Development.json")
