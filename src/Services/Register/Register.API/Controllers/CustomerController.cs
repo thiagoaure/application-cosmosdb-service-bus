@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.ServiceBus.Management;
 using Newtonsoft.Json;
 using Register.API.DTOs;
+using Register.API.Filters;
 using Register.API.Helpers;
 using Register.API.Interfaces.Services;
 using System.Configuration;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -24,6 +27,9 @@ public class CustomerController
     }
 
     [HttpPost]
+    //[ServiceFilter(typeof(AuthorizationFilter))]
+    [ServiceFilter(typeof(ExceptionFilter))]
+    [ServiceFilter(typeof(ActionFilter))]
     public async Task<IActionResult> CreateCustomerAsync(
         [FromBody] CustomerRequestDTO request
     )

@@ -1,0 +1,8 @@
+﻿using Processor.API.Entities;
+using Register.API.DTOs;
+
+namespace Register.API.Interfaces.Services;
+public interface ICustomerService
+{
+    Task<CustomerResponseDTO> SaveCustomer(CustomerRequestDTO customer);
+}

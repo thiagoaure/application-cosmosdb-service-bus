@@ -1,6 +1,7 @@
 using AutoMapper;
 using Processor.API.DataContext;
 using Register.API.Extensions;
+using Register.API.Filters;
 using Register.API.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddCustomServices();
 builder.Services.AddCustomRepositories();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+builder.Services.AddCustomFilters();
 
 //builder.Services.AddSingleton(typeof(AutoMapperProfiles));
 
