@@ -1,8 +1,7 @@
-﻿namespace Register.API.Helpers;
+﻿namespace Processor.API.Helpers;
 
 public class ConfigurationConnectionStrings
 {
-
     public static IConfiguration ConfigConnection()
     {
         var configuration = new ConfigurationBuilder()

@@ -20,9 +20,9 @@ public class AppDbContext : DbContext
     private async Task InitializeDatabaseAsync()
     {
 
-        endpointAccount = ConfigurationConnectionStrings.ConfigConncetion().
+        endpointAccount = ConfigurationConnectionStrings.ConfigConnection().
             GetValue<string>("AccountEndpoint")!;
-        keyAccount = ConfigurationConnectionStrings.ConfigConncetion().
+        keyAccount = ConfigurationConnectionStrings.ConfigConnection().
             GetValue<string>("AccountKey")!;
 
         CosmosClient cosmosClient = new CosmosClient(endpointAccount, keyAccount);
