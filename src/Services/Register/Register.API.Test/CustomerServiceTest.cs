@@ -4,7 +4,7 @@ using Register.API.DTOs;
 using Register.API.Entities;
 using Register.API.Interfaces.Repositories;
 using Register.API.Services;
-using Xunit.Sdk;
+using Xunit;
 
 namespace Register.API.Test;
 
@@ -68,11 +68,10 @@ public class CustomerServiceTests
 
         // Assert
         Assert.IsNotNull(result);
-        Assert.AreEqual(customerResponseDTO.Id, result.Id);
-        Assert.AreEqual(customerResponseDTO.Name, result.Name);
+        Assert.AreEqual(customerResponseDTO, result);
     }
 
-    public static Customer FakeCustomer ()
+    private static Customer FakeCustomer ()
     {
         return new Customer
         {
@@ -93,7 +92,7 @@ public class CustomerServiceTests
         };
 
     }
-    public static CustomerResponseDTO FakeCustomerResDTO()
+    private static CustomerResponseDTO FakeCustomerResDTO()
     {
         return new CustomerResponseDTO
         {
@@ -114,7 +113,7 @@ public class CustomerServiceTests
         };
 
     }
-    public static CustomerRequestDTO FakeCustomerReqDTO()
+    private static CustomerRequestDTO FakeCustomerReqDTO()
     {
         return new CustomerRequestDTO
         {
