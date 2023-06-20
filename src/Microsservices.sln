@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Processor.API", "Services\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Register.API", "Services\Register\Register.API\Register.API.csproj", "{68BE319C-99DC-4C8D-940D-FA6926B4CDAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register.API.Test", "Services\Register\Register.API.Test\Register.API.Test.csproj", "{4E51881F-F2D7-492F-9211-6CB934838782}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{68BE319C-99DC-4C8D-940D-FA6926B4CDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68BE319C-99DC-4C8D-940D-FA6926B4CDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68BE319C-99DC-4C8D-940D-FA6926B4CDAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E51881F-F2D7-492F-9211-6CB934838782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E51881F-F2D7-492F-9211-6CB934838782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E51881F-F2D7-492F-9211-6CB934838782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E51881F-F2D7-492F-9211-6CB934838782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 		{6FD83DDB-34D6-4629-BF1C-117F8426F283} = {27A6A79D-3853-4E99-8DC5-F42631DEAE78}
 		{272AC359-A09F-4F32-BEAC-040F33574B4C} = {3E93D94A-BF9A-4ED6-BBE4-E74F20884186}
 		{68BE319C-99DC-4C8D-940D-FA6926B4CDAF} = {6FD83DDB-34D6-4629-BF1C-117F8426F283}
+		{4E51881F-F2D7-492F-9211-6CB934838782} = {6FD83DDB-34D6-4629-BF1C-117F8426F283}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D9575AB-A6F1-4EE6-8E45-C77A852A6B1B}
