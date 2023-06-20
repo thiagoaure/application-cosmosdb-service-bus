@@ -1,8 +1,9 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using Processor.API.Entities;
+using Register.API.Entities;
+using Register.API.Helpers;
 
-namespace Processor.API.DataContext;
+namespace Register.API.DataContext;
 public class AppDbContext : DbContext
 {
     public DbSet<Customer> Customer { get; set; }
@@ -18,14 +19,11 @@ public class AppDbContext : DbContext
 
     private async Task InitializeDatabaseAsync()
     {
-        var configuration = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.Development.json")
-        .Build();
 
-        var cosmosDbConfiguration = configuration.GetSection("ConnectionStrings");
-
-        endpointAccount = cosmosDbConfiguration.GetValue<string>("AccountEndpoint");
-        keyAccount = cosmosDbConfiguration.GetValue<string>("AccountKey");
+        endpointAccount = ConfigurationConnectionStrings.ConfigConnection().
+            GetValue<string>("AccountEndpoint")!;
+        keyAccount = ConfigurationConnectionStrings.ConfigConnection().
+            GetValue<string>("AccountKey")!;
 
         CosmosClient cosmosClient = new CosmosClient(endpointAccount, keyAccount);
 

@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Register.API.Entities;
 
-namespace Register.API.Entities;
-
-[ComplexType]
-public class Address
+namespace Register.API.DTOs;
+public class CustomerRequestDTO
 {
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Document { get; set; }
     public string Country { get; set; }
     public string Uf { get; set; }
     public string City { get; set; }

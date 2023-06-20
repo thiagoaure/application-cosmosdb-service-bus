@@ -1,10 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Register.API.Entities;
 
-namespace Register.API.Entities;
-public class Customer
+namespace Register.API.DTOs;
+public class CustomerResponseDTO
 {
-    [Key]
-    public Guid Id { get; set; } 
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
     public Address Address { get; set; }

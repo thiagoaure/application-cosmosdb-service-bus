@@ -1,14 +1,17 @@
-using Microsoft.Azure.Cosmos;
-using Processor.API.DataContext;
-using Processor.API.Repositories;
-using Register.API.Interfaces.Repositories;
+using Register.API.DataContext;
+using Register.API.Extensions;
+using Register.API.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>();
 
-builder.Services.AddTransient<ICustomerRespository, CustomerRepository>();
+builder.Services.AddCustomServices();
+builder.Services.AddCustomRepositories();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+builder.Services.AddCustomFilters();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

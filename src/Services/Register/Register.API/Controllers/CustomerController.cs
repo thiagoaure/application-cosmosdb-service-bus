@@ -1,28 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Processor.API.Entities;
-using Register.API.Interfaces.Repositories;
+using Register.API.DTOs;
+using Register.API.Filters;
+using Register.API.Interfaces.Services;
 
-namespace Processor.API.Controllers;
+namespace Register.API.Controllers;
 [Route("api/customer")]
 [ApiController]
 public class CustomerController
 {
-    private readonly ICustomerRespository _customerRepository;
+    private readonly ICustomerService _customerService;
+    private readonly IServiceBus _serviceBus;
 
-    public CustomerController(ICustomerRespository customerRepository)
+    public CustomerController(ICustomerService customerService, IServiceBus serviceBus)
     {
-        _customerRepository = customerRepository;
+        _customerService = customerService;
+        _serviceBus = serviceBus;
     }
 
     [HttpPost]
+    //[ServiceFilter(typeof(AuthorizationFilter))]
+    [ServiceFilter(typeof(ExceptionFilter))]
+    [ServiceFilter(typeof(ActionFilter))]
     public async Task<IActionResult> CreateCustomerAsync(
-        [FromBody] Customer customer
+        [FromBody] CustomerRequestDTO request
     )
     {
         try
         {
-            var response = await _customerRepository.SaveCustomer( customer );
+            var response = await _customerService.SaveCustomer(request);
+            await _serviceBus.SendMessageToQueue(request);
+
+            return new OkObjectResult(response);
+        }
+        catch (Exception ex)
+        {
+            var json = JsonConvert.SerializeObject(ex)!;
+            return new BadRequestObjectResult(json);
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllCustomersAsync()
+    {
+        try
+        {
+            var response = await _customerService.GetAll();
+
             return new OkObjectResult(response);
         }
         catch (Exception ex)
