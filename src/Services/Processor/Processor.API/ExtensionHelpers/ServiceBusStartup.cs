@@ -1,4 +1,4 @@
-﻿using Processor.API.Interfaces;
+﻿using Processor.API.Interfaces.ServiceBus;
 using Processor.API.ServiceBus;
 
 namespace Processor.API.ExtensionHelpers;

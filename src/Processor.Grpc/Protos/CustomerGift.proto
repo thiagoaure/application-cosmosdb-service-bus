@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option csharp_namespace = "Processor.Grpc.Protos";
+
+service CustomerGiftProtoService{
+	rpc GetCustomer(GetCustomerRequest) returns (CustomerResponseDTO);
+	//rpc CreateCustomer(CreateCustomerequest) returns (CustomerResponseDTO);
+	rpc UpdateCustomer (UpdateCustomerRequest) returns (CustomerResponseDTO);
+    rpc DeleteCustomer (DeleteCustomerRequest) returns (CustomerResponseDTO);
+}
+
+message GetCustomerRequest {
+	bytes id = 1;
+}
+ message CustomerResponseDTO {
+	bytes id = 1;
+	string name = 2;
+	string email = 3;
+	Address address = 4;
+	string document = 5;
+	int64 subscription = 6;
+	bool hasgift = 7;
+}
+
+message Address {
+	string coutry = 1;
+	string uf = 2;
+	string city = 3;
+	string zipcode = 4;
+	string addressnumber = 5;
+	string street = 6;
+	string district = 7;
+}
+
+ message UpdateCustomerRequest {
+	bytes id = 1;
+	string name = 2;
+	string email = 3;
+	Address address = 4;
+	string document = 5;
+	int64 subscription = 6;
+	bool hasgift = 7;
+}
+
+message DeleteCustomerRequest {
+	bytes id = 1;
+}

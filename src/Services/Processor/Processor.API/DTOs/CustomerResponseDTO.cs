@@ -1,8 +1,9 @@
-﻿using Register.API.Constants.Enums;
-using Register.API.Entities;
+﻿using Processor.API.Constants.Enums;
+using Processor.API.Entities;
 
-namespace Register.API.DTOs;
-public class CustomerResponseDTO
+namespace Processor.API.DTOs;
+
+public class CustomerResponseDTO 
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

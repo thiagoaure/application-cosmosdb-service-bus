@@ -1,6 +1,6 @@
 ﻿using Azure.Messaging.ServiceBus;
 
-namespace Processor.API.Interfaces;
+namespace Processor.API.Interfaces.ServiceBus;
 
 public interface IServiceBus
 {

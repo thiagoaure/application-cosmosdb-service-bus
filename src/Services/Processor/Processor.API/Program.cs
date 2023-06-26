@@ -1,13 +1,20 @@
+using Processor.API.DataContext;
 using Processor.API.ExtensionHelpers;
+using Processor.API.Extensions;
+using Processor.API.Helpers;
 using Processor.API.Interfaces;
 using Processor.API.ServiceBus;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppDbContext>();
 
 builder.Services.AddControllers();
-await builder.Services.AddCustomServiceBusAsync();
+builder.Services.AddCustomProcessorRepositories();
+builder.Services.AddCustomProcessorServices();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+//await builder.Services.AddCustomServiceBusAsync();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

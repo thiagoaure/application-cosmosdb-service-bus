@@ -1,7 +1,7 @@
-﻿using Register.API.Constants.Enums;
+﻿using Processor.API.Constants.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Register.API.Entities;
+namespace Processor.API.Entities;
 public class Customer
 {
     [Key]

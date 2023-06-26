@@ -1,6 +1,6 @@
 ﻿using Azure.Messaging.ServiceBus;
 using Processor.API.Helpers;
-using Processor.API.Interfaces;
+using Processor.API.Interfaces.ServiceBus;
 
 namespace Processor.API.ServiceBus;
 
